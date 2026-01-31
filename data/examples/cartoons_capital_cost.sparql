@@ -1,3 +1,6 @@
+# Extracting animated films with production budget to analyze costs based on genre, country, and duration.
+# Извлекаем мультфильмы с указанием бюджета производства для анализа затрат на создание мультфильмов в зависимости от жанра, страны и длительности.
+
 SELECT DISTINCT ?film ?filmLabel ?capital_cost
 WHERE {
   ?film wdt:P31 wd:Q202866 ;  # Экземпляры мультфильмов (Q202866)

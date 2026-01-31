@@ -1,3 +1,6 @@
+# Extracting animated films with genre, country, duration, and budget data for comprehensive analysis of animation film characteristics.
+# Извлекаем мультфильмы с информацией о жанре, стране происхождения, длительности и бюджете для комплексного анализа характеристик мультипликационных фильмов.
+
 SELECT DISTINCT ?film ?filmLabel ?genreLabel ?countryLabel ?duration ?capital_cost
 WHERE {
   ?film wdt:P31 wd:Q202866 ;  # Экземпляры мультфильмов (Q202866)
