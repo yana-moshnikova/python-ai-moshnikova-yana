@@ -1,5 +1,5 @@
-# Извлекает данные о художественных музеях: URI, название, год основания, страна, посетители, площадь, подписчики в соцсетях.
-# Extracts data about art museums: URI, label, inception year, country, visitors, area, social media followers.
+# Извлекает данные о художественных музеях: URL, название, год основания, страна, посетители, площадь, подписчики в соцсетях.
+# Extracts data about art museums: URL, label, inception year, country, visitors, area, social media followers.
 
 SELECT DISTINCT
   ?museum
