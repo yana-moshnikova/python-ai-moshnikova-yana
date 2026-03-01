@@ -1,7 +1,8 @@
-# Извлекает данные о художественных музеях: название, год основания, страна, посетители, площадь, подписчики в соцсетях.
-# Extracts data about art museums: label, inception year, country, visitors, area, social media followers.
+# Извлекает данные о художественных музеях: URI, название, год основания, страна, посетители, площадь, подписчики в соцсетях.
+# Extracts data about art museums: URI, label, inception year, country, visitors, area, social media followers.
 
 SELECT DISTINCT
+  ?museum
   ?museumLabel
   (YEAR(?inception) AS ?inceptionYear)
   ?countryLabel
@@ -11,10 +12,10 @@ SELECT DISTINCT
 WHERE {
   ?museum wdt:P31 wd:Q207694;
           wdt:P17 ?country;
-          wdt:P2046 ?area;
           wdt:P571 ?inception.
-  OPTIONAL { ?museum wdt:P1174 ?visitors. }
-  OPTIONAL { ?museum wdt:P8687 ?socialFollowers. }
+  OPTIONAL { ?museum wdt:P2046 ?area. }      # Площадь (опционально)
+  OPTIONAL { ?museum wdt:P1174 ?visitors. }   # Посетители в год (опционально)
+  OPTIONAL { ?museum wdt:P8687 ?socialFollowers. } # Подписчики в соцсетях (опционально)
+
   SERVICE wikibase:label { bd:serviceParam wikibase:language "ru,en". }
 }
-
