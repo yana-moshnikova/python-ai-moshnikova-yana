@@ -1,0 +1,20 @@
+# Извлекает данные о посетителях художественных музеев с указанием года (квалификатор даты).
+# Extracts visitors data for art museums with year specified (point in time qualifier).
+
+SELECT DISTINCT
+  ?museum
+  ?museumLabel
+  (YEAR(?date) AS ?year)
+  ?visitors
+WHERE {
+  ?museum wdt:P31 wd:Q207694;  # Тип: художественный музей
+          wdt:P17 ?country.    # Страна
+
+  ?museum p:P1174 ?visitorsStatement.  # Утверждение о посетителях
+  ?visitorsStatement ps:P1174 ?visitors;  # Количество посетителей
+                     pq:P585 ?date.        # Квалификатор: дата (год)
+
+  ?museum rdfs:label ?museumLabel.       # Явное извлечение метки музея
+  FILTER(LANG(?museumLabel) = "ru")       # Выбираем метку на русском языке
+}
+ORDER BY ?museumLabel ?year
